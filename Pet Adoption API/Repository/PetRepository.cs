@@ -52,6 +52,11 @@ namespace Pet_Adoption_API.Repository
             return await _context.Owners.AnyAsync(o => o.Id == ownerId);
         }
 
+        public Task<bool> PetExistsAsync(int petId)
+        {
+            return _context.Pets.AnyAsync(p => p.Id == petId);
+        }
+
         public Task<bool> ShelterExistsAsync(int shelterId)
         {
             return _context.Shelters.AnyAsync(s => s.Id == shelterId);
