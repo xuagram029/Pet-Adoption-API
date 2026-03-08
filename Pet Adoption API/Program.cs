@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IAdoptionApplicationRepository, AdoptionApplicationRepository>();
 
 var app = builder.Build();
 
