@@ -1,14 +1,10 @@
-﻿using Pet_Adoption_API.DTOs.Pet;
-
-namespace Pet_Adoption_API.DTOs.Shelter
+﻿namespace Pet_Adoption_API.DTOs.Shelter
 {
-    public class ShelterReadDto
+    public class ShelterUpsertDto
     {
-        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public ICollection<PetReadDto> Pets { get; set; } = new List<PetReadDto>();
     }
 }

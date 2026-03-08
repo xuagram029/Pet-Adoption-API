@@ -38,9 +38,9 @@ namespace Pet_Adoption_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PetCreateDto petDto)
         {
-            if(petDto.ShelterId == null && petDto.OwnerId == null)
+            if(petDto.ShelterId.HasValue && petDto.OwnerId.HasValue)
             {
-                return BadRequest("A pet must belong to either a Shelter or an Owner.");
+                return BadRequest("A pet cannot be in a shelter and owned by someone at the same time.");
             }
 
             // Existence Check for Shelter

@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IAdoptionApplicationRepository, AdoptionApplicationRepository>();
+builder.Services.AddScoped<IShelterRepository, ShelterRepository>();
 
 var app = builder.Build();
 

@@ -15,9 +15,16 @@ namespace Pet_Adoption_API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Shelter>()
+                .HasIndex(s => s.Name)
+                .IsUnique();
+
             // Global Filter: Only load applications that are NOT soft-deleted
             modelBuilder.Entity<AdoptionApplication>()
                 .HasQueryFilter(a => !a.IsDeleted);
+
 
             modelBuilder.Entity<Pet>()
                 .HasOne(p => p.Shelter)
@@ -44,13 +51,6 @@ namespace Pet_Adoption_API.Data
                 .HasForeignKey(a => a.PetId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Owner>()
-                .HasMany(o => o.Applications)
-                .WithOne(a => a.Owner)
-                .HasForeignKey(a => a.OwnerId)
-                .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }
